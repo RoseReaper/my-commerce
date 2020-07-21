@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cgi.mycommerce.dao.DaoFactory;
+import com.cgi.mycommerce.dao.ProductDao;
+import com.cgi.mycommerce.entity.Product;
 import com.mycommerce.app.bo.MyProduct;
 import com.mycommerce.app.dao.MyProductDao;
 
@@ -20,7 +23,8 @@ public class ShowProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		Long idCast = Long.valueOf(id);
-		MyProduct product = MyProductDao.findProductById(idCast);
+		ProductDao productDao = DaoFactory.getProductDao();
+		Product product = productDao.findProductById(idCast);
 		req.setAttribute("product", product);
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/showProduct.jsp");
         rd.forward(req, resp);

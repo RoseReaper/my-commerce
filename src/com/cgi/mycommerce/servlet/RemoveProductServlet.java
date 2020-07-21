@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cgi.mycommerce.dao.DaoFactory;
+import com.cgi.mycommerce.dao.ProductDao;
 import com.mycommerce.app.bo.MyProduct;
 import com.mycommerce.app.dao.MyProductDao;
 
@@ -17,7 +19,8 @@ public class RemoveProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		Long idCast = Long.valueOf(id);
-		MyProductDao.removeProduct(idCast);
+		ProductDao productDao = DaoFactory.getProductDao();
+		productDao.removeProduct(idCast);
 		resp.sendRedirect("../listProducts");
 	}
 

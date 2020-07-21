@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cgi.mycommerce.dao.DaoFactory;
+import com.cgi.mycommerce.dao.ProductDao;
+import com.cgi.mycommerce.entity.Product;
 import com.mycommerce.app.bo.MyProduct;
 import com.mycommerce.app.dao.MyProductDao;
 
@@ -18,7 +21,8 @@ public class ListProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<MyProduct> products = MyProductDao.getAllProducts();
+    	ProductDao productDao = DaoFactory.getProductDao();
+    	List<Product> products = productDao.findAllProducts();
         req.setAttribute("products", products);
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/listProducts.jsp");
         rd.forward(req, resp);

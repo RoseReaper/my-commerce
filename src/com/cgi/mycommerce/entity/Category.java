@@ -51,5 +51,9 @@ public class Category {
 	public void setAllProducts(List<Product> products) {
 		this.products = products;
 	}
+	
+	public String toString() {
+		return this.name;
+	}
 
 }

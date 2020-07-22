@@ -1,28 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:url value="/assets/style.css" var="style" />
-<c:url value="/addProduct" var="addProductLink"/>
+<c:url value="/addProduct" var="addProductLink" />
 
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${style}" />
 <title>Ajouter un produit</title>
 </head>
 <body>
 
 	<%@include file="header.jsp"%>
-	
+
 	<h1>Ajouter un produit</h1>
 
 	<form method="post" action="${addProductLink}">
-		<p><label for="name">Nom :</label></p>
-		<p><input type="text" name="name" /></p>
-		<p><label for="content">Contenu :</label></p>
-		<p><input type="text" name="content" /></p>
-		<p><label for="price">Prix :</label></p>
-		<p><input type="text" name="price" /></p>
-		<p><input type="submit" value="Envoyer" /></p>
+		<div class="form-group">
+			<label for="name">Nom :</label>
+			<input type="text" class="form-control" name="name" required>
+		</div>
+		<div class="form-group">
+			<label for="content">Contenu</label>
+			<input type="text" class="form-control" name="content" required>
+		</div>
+		<div class="form-group">
+			<label for="price">Prix :</label>
+			<input type="text" class="form-control" name="price" required>
+		</div>
+		<div class="form-group">
+			<label for="category">Catégorie :</label>
+			<select class="form-control" name="categoryId" required>
+				<option value="default" selected>Choisissez une catégorie</option>
+				<c:forEach items="${categories}" var="category">
+					<option value="${category.id}">${category.name}</option>
+				</c:forEach>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Envoyer</button>
 	</form>
 
 	<%@include file="footer.jsp"%>

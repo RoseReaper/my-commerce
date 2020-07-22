@@ -33,12 +33,6 @@ public class Product {
 
 	public Product() {
 	}
-	
-	public Product(String name, String content, float price) {
-		this.name = name;
-		this.content = content;
-		this.price = price;
-	}
 
 	public Long getId() {
 		return id;
@@ -70,6 +64,14 @@ public class Product {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

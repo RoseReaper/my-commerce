@@ -17,7 +17,13 @@ public class JpaCategoryDao extends JpaDao<Category, Long> implements CategoryDa
 			em.getTransaction().begin();
 			em.persist(category);
 			em.getTransaction().commit();
-		} finally {
+		} 
+		catch (RuntimeException re) {
+			if(em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			throw re;
+		}finally {
 			em.close();
 		}
 	}
@@ -43,7 +49,12 @@ public class JpaCategoryDao extends JpaDao<Category, Long> implements CategoryDa
 			query.setParameter("id", category.getId());
 			query.executeUpdate();
 			em.getTransaction().commit();
-		} finally {
+		} catch (RuntimeException re) {
+			if(em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			throw re;
+		}finally {
 			em.close();
 		}
 	}
@@ -57,7 +68,12 @@ public class JpaCategoryDao extends JpaDao<Category, Long> implements CategoryDa
 			query.setParameter("id", id);
 			query.executeUpdate();
 			em.getTransaction().commit();
-		} finally {
+		} catch (RuntimeException re) {
+			if(em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			throw re;
+		}finally {
 			em.close();
 		}
 	}

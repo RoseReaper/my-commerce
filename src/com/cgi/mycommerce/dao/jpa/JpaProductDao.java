@@ -17,6 +17,11 @@ public class JpaProductDao extends JpaDao<Product, Long> implements ProductDao {
 			em.getTransaction().begin();
 			em.persist(product);
 			em.getTransaction().commit();
+		} catch (RuntimeException re) {
+			if(em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			throw re;
 		} finally {
 			em.close();
 		}
@@ -45,7 +50,12 @@ public class JpaProductDao extends JpaDao<Product, Long> implements ProductDao {
 			query.setParameter("id", product.getId());
 			query.executeUpdate();
 			em.getTransaction().commit();
-		} finally {
+		} catch (RuntimeException re) {
+			if(em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			throw re;
+		}finally {
 			em.close();
 		}
 	}
@@ -59,7 +69,12 @@ public class JpaProductDao extends JpaDao<Product, Long> implements ProductDao {
 			query.setParameter("id", id);
 			query.executeUpdate();
 			em.getTransaction().commit();
-		} finally {
+		} catch (RuntimeException re) {
+			if(em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			throw re;
+		}finally {
 			em.close();
 		}
 	}

@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="header.jsp"%>
 <title>Détails d'un produit</title>
 </head>
 <body>
 
-	<%@include file="header.jsp"%>
+	<%@include file="navbar.jsp"%>
 
 	<h1>Détail du produit</h1>
 

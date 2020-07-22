@@ -5,15 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="header.jsp"%>
 <title>Ajouter une catégorie</title>
 </head>
 <body>
 
-	<%@include file="header.jsp"%>
+	<%@include file="navbar.jsp"%>
 
 	<h1>Ajouter une catégorie</h1>
 
-<form method="post" action="${addCategoryLink}">
+<form method="post" action="${addCategoryLink}" accept-charset="utf-8">
   <div class="form-group">
     <label for="name">Nom :</label>
     <input type="text" class="form-control" name="name" required>

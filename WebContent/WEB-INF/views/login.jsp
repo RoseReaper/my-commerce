@@ -5,13 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="header.jsp"%>
 <title>Login</title>
 </head>
 <body>
 
-	<%@include file="header.jsp"%>
+	<%@include file="navbar.jsp"%>
 
-	<form method="post" action="${loginLink}">
+	<form method="post" action="${loginLink}" accept-charset="utf-8">
 		<div class="form-group">
 			<label for="username">Nom d'utilisateur :</label> <input type="text"
 				class="form-control" name="username" required>

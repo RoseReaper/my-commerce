@@ -5,15 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="header.jsp"%>
 <title>Ajouter un produit</title>
 </head>
 <body>
 
-	<%@include file="header.jsp"%>
+	<%@include file="navbar.jsp"%>
 
 	<h1>Ajouter un produit</h1>
 
-	<form method="post" action="${addProductLink}">
+	<form method="post" action="${addProductLink}" accept-charset="utf-8">
 		<div class="form-group">
 			<label for="name">Nom :</label>
 			<input type="text" class="form-control" name="name" required>

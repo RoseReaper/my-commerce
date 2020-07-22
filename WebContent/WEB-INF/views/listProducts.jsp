@@ -5,11 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="header.jsp"%>
 <title>Liste des produits</title>
 </head>
 <body>
 
-	<%@include file="header.jsp"%>
+	<%@include file="navbar.jsp"%>
 
 	<h1>Produits</h1>
 

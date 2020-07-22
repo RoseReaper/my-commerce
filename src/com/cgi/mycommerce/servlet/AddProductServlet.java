@@ -30,6 +30,7 @@ public class AddProductServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		CategoryDao categoryDao = DaoFactory.getCategoryDao();
 		Product product = new Product();
 		String name = req.getParameter("name");
